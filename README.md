@@ -9,3 +9,5 @@ FLIP stands for:
 * **Play** - transition from first to last state (transform from delta to none)
 
 ![Flip Carousel Demo](flip-carousel-demo.gif?raw=true)
+
+Example will only work on browsers that support Web Animation API (see [caniuse.com](https://caniuse.com/#feat=web-animation)). There is a great [polyfill](https://github.com/web-animations/web-animations-js) that you can use.
