@@ -1,0 +1,25 @@
+body {
+  padding: 10px;
+  margin: 0;
+}
+
+.carousel {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas: "thumbnails image";
+}
+
+.carousel__thumbnails {
+  grid-area: thumbnails;
+  display: grid;
+  grid-gap: 10px;
+}
+
+.carousel__thumbnail--selected {
+  visibility: hidden;
+}
+
+.carousel__main-image {
+  grid-area: image;
+}
