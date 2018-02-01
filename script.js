@@ -24,13 +24,12 @@ function onThumbnailClick(e) {
   const prevThumbnail = document.querySelector('.carousel__thumbnail--selected');
   const nextThumbnail = e.currentTarget;
 
-  hideImage(prevThumbnail);
-  setTimeout(function() {
-    showImage(nextThumbnail);
-  }, ANIMATION_DURATION);
+  hideImage(prevThumbnail, function() {
+    showImage(nextThumbnail)
+  });
 }
 
-function showImage(thumbnail) {
+function showImage(thumbnail, callback) {
   const first = thumbnail.getBoundingClientRect();
 
   // Move to main
@@ -45,7 +44,7 @@ function showImage(thumbnail) {
   const dw = first.width / last.width;
   const dh = first.height / last.height;
 
-  image.animate([{
+  var animation = image.animate([{
     opacity: 1,
     transformOrigin: 'top left',
     transform: `
@@ -61,9 +60,14 @@ function showImage(thumbnail) {
     easing: 'ease-out',
     fill: 'both',
   });
+
+  // Bind to animation finished event
+  animation.addEventListener('finish', callback);
+
+  return animation;
 }
 
-function hideImage(thumbnail) {
+function hideImage(thumbnail, callback) {
   if (!thumbnail) {
     return;
   }
@@ -78,7 +82,7 @@ function hideImage(thumbnail) {
   const dw = first.width / last.width;
   const dh = first.height / last.height;
 
-  image.animate([{
+  var animation = image.animate([{
     opacity: 1,
     transformOrigin: 'top left',
     transform: 'none',
@@ -100,7 +104,11 @@ function hideImage(thumbnail) {
     fill: 'both',
   });
 
-  setTimeout(function() {
-    thumbnail.classList.remove('carousel__thumbnail--selected');
-  }, ANIMATION_DURATION);
+  // Bind to animation finished event
+  animation.addEventListener('finish', callback);
+  animation.addEventListener('finish', function() {
+    thumbnail.classList.remove('carousel__thumbnail--selected')
+  });
+
+  return animation;
 }
