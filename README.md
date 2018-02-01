@@ -7,3 +7,5 @@ FLIP stands for:
 * **Last** - manipulate the object instantaneously and save state again
 * **Invert** - calculate differences (delta) between states, to make it appear as if object is (still) in its first state
 * **Play** - transition from first to last state (transform from delta to none)
+
+![Flip Carousel Demo](flip-carousel-demo.gif?raw=true)
