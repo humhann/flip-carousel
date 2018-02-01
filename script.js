@@ -32,7 +32,7 @@ function onThumbnailClick(e) {
 function showImage(thumbnail, callback) {
   const first = thumbnail.getBoundingClientRect();
 
-  // Move to main
+  // Move the image
   const image = document.querySelector('.carousel__image img');
   image.src = thumbnail.href;
   const last = image.getBoundingClientRect();
